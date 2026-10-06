@@ -14,7 +14,7 @@ const NavLinks = async () => {
     const navs: NavLinksProps[] = data.data;
     const filteredNavs = navs.filter(n => n.scrapable)
 
-    console.log(data);
+    // console.log(data);
 
     return (
         <div className="flex justify-center gap-4 py-2 md:py-3 text-sm md:text-base font-medium text-gray-700">
