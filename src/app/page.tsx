@@ -1,19 +1,21 @@
 import MainNews from "@/components/MainNews";
-import Marquee from "@/components/Marquee";
+// import Marquee from "@/components/Marquee";
 import MostRead from "@/components/MostRead";
 import NewsCard from "@/components/NewsCard";
+
+interface INewsArticle {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  imageUrl: string;
+  imageAlt: string;
+}
 
 interface IOtherSection {
   curationId: string;
   title: string;
-  articles: {
-    id: string;
-    title: string;
-    description: string;
-    category: string;
-    imageUrl: string;
-    imageAlt: string
-  }
+  articles: INewsArticle[];
 }
 
 export default async function Home() {
@@ -25,7 +27,7 @@ export default async function Home() {
 
   return (
     <div>
-      <Marquee />
+      {/* <Marquee /> */}
 
       <div className='grid grid-cols-3 mt-4 container mx-auto gap-8'>
         {/* news section */}
