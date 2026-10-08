@@ -1,6 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
-interface News{
+interface News {
     id: string;
     title: string;
     description: string;
@@ -9,24 +10,26 @@ interface News{
     imageAlt: string
 }
 
-const MainNews = ({ news }: {news: News[]}) => {
+const MainNews = ({ news }: { news: News[] }) => {
     const [firstNews, ...otherNews] = news;
     return (
         <div className='flex gap-4'>
-            <div className="card bg-base-100 w-96 shadow-sm">
-                <figure>
-                    <Image
-                        height={300}
-                        width={400}
-                        src={firstNews.imageUrl}
-                        alt="Shoes" />
-                </figure>
-                <div className="card-body">
-                    <p className='text-red-600 font-semibold'>{firstNews.category}</p>
-                    <h2 className="card-title">{firstNews.title}</h2>
-                    <p>{firstNews.description}</p>
+            <Link href={`/news/${firstNews.id}`}>
+                <div className="card bg-base-100 w-96 shadow-sm">
+                    <figure>
+                        <Image
+                            height={300}
+                            width={400}
+                            src={firstNews.imageUrl}
+                            alt="Shoes" />
+                    </figure>
+                    <div className="card-body">
+                        <p className='text-red-600 font-semibold'>{firstNews.category}</p>
+                        <h2 className="card-title">{firstNews.title}</h2>
+                        <p>{firstNews.description}</p>
+                    </div>
                 </div>
-            </div>
+            </Link>
 
             <div className='grid gap-3'>
                 {

@@ -14,7 +14,7 @@ const CategoryNews = async ({params}: {params: {categoryId: string}}) => {
 
     const res = await fetch(`https://news-api-v2.vercel.app/api/category/${categoryId}`)
     const data = await res.json();
-    const categoryNews = data.data;
+    const categoryNews: News[] = data.data;
     
 
     return (
