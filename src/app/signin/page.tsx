@@ -5,11 +5,17 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 const SignInPage = () => {
+    const handleGoogleSignIn = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+        });
+    };
+
     const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
         e.preventDefault()
 
         const formData = new FormData(e.target)
-        const user = Object.fromEntries(formData.entries()) as {email: string, password: string};
+        const user = Object.fromEntries(formData.entries()) as { email: string, password: string };
 
         const { data, error } = await authClient.signIn.email({
             ...user,
@@ -25,6 +31,7 @@ const SignInPage = () => {
             toast.error(error.message);
             console.log(error);
         }
+
     }
 
     return (
@@ -41,6 +48,9 @@ const SignInPage = () => {
                     <button type='submit' className="btn bg-red-700 text-white mt-4">সাইন ইন করুন</button>
                 </fieldset>
             </form>
+
+            <button onClick={handleGoogleSignIn} className="btn ">Sign In With Google</button>
+
         </div>
     );
 };
